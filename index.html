@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Re.Laxy｜麹美容 × パーツケア</title>
+<meta name="description" content="Re.Laxy｜肌を見て、守る美容。発酵美容×パーツ美容を軸に、ハンド・首・足などのパーツケア、講習、商品をお届けします。">
+<style>
+:root{--ink:#302d29;--muted:#746e67;--cream:#f7f4ed;--paper:#fffdf9;--sage:#78836e;--line:#e6e0d6}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;background:var(--paper);line-height:1.9}
+a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 28px}
+header{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(255,253,249,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(230,224,214,.7)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-family:Georgia,serif;letter-spacing:.12em;font-size:23px}.logo small{font:11px sans-serif;letter-spacing:.18em;display:block;color:var(--muted);margin-top:-8px}
+nav{display:flex;gap:26px;font-size:13px;color:#5f5a54}@media(max-width:700px){nav{display:none}}
+.hero{min-height:0;aspect-ratio:1/1;display:grid;place-items:center;background:linear-gradient(120deg,#eee9de,#faf8f2 55%,#e6eadf);padding-top:72px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.45}.hero:before{width:420px;height:420px;background:#d9dfd0;right:-120px;top:90px}.hero:after{width:300px;height:300px;background:#e9dcca;left:-120px;bottom:-80px}
+.hero-inner{position:relative;z-index:1;width:100%;padding:7vw 0}.eyebrow{font-size:12px;letter-spacing:.22em;color:var(--sage);font-weight:700}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,8vw,92px);line-height:1.05;font-weight:400;letter-spacing:.04em;margin:20px 0}.hero h1 span{font-size:.38em;display:block;font-family:inherit;letter-spacing:.14em;margin-top:18px}.hero p{max-width:590px;color:#5f5a54;font-size:16px}.btns{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}.btn{padding:12px 22px;border:1px solid #bcb5aa;border-radius:999px;font-size:13px}.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+section{padding:110px 0}.section-kicker{font-size:11px;letter-spacing:.22em;color:var(--sage);font-weight:700}.section-title{font-family:Georgia,serif;font-size:40px;font-weight:400;line-height:1.25;margin:12px 0 30px}.intro{max-width:720px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.card{padding:30px;background:var(--cream);border:1px solid var(--line);border-radius:18px}.card .num{font:28px Georgia;color:var(--sage)}.card h3{font-size:20px;margin:12px 0 8px}.card p{font-size:14px;color:var(--muted);margin:0}
+.philosophy{background:#f1f3ed}.quote{font-family:Georgia,serif;font-size:clamp(28px,4vw,48px);line-height:1.5;max-width:850px;margin:0}.quote em{color:var(--sage);font-style:normal}
+.products{grid-template-columns:repeat(3,1fr)}.product{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:white}.product-img{height:210px;background:linear-gradient(135deg,#ddd7c9,#f5f0e6);display:grid;place-items:center;color:#80786d;font-family:Georgia;font-size:25px}.product-body{padding:22px}.product h3{margin:0 0 8px;font-size:17px}.product p{margin:0;color:var(--muted);font-size:13px}
+.course{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}@media(max-width:800px){.course{grid-template-columns:1fr}}.course-box{background:var(--ink);color:white;border-radius:24px;padding:38px}.course-box .price{font:38px Georgia;margin:10px 0}.course-box ul{padding-left:20px;color:#ddd}
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}@media(max-width:800px){.about{grid-template-columns:1fr}}.about-mark{font:clamp(70px,11vw,130px) Georgia;color:#d6d9cf;line-height:1}
+.contact{background:#e8eadf;text-align:center}.contact p{color:var(--muted)}.contact .btns{justify-content:center}
+footer{padding:35px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.course-scroll{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding:8px 4px 22px;
+  margin-top:42px;
+  scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+}
+.course-scroll::-webkit-scrollbar{height:7px}
+.course-scroll::-webkit-scrollbar-thumb{background:#c9c4ba;border-radius:99px}
+.course-card{
+  flex:0 0 245px;
+  min-height:300px;
+  padding:26px 24px;
+  background:#f7f4ed;
+  border:1px solid #e2ddd3;
+  border-radius:20px;
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+}
+.course-card.featured{background:#e8eadf}
+.course-card.dark{background:#302d29;color:white;border-color:#302d29}
+.course-no{font:18px Georgia;color:#78836e;margin-bottom:22px}
+.course-card h3{font-size:18px;line-height:1.55;margin:0 0 12px}
+.course-sub{font-size:11px;color:#777168;min-height:34px}
+.course-card.dark .course-sub{color:#c9c5be}
+.course-price{font:30px Georgia;margin-top:auto;padding-top:22px}
+.course-card a{
+  display:inline-block;
+  margin-top:18px;
+  width:max-content;
+  padding:8px 15px;
+  border:1px solid #bcb5aa;
+  border-radius:999px;
+  font-size:12px;
+}
+.course-card.dark a{border-color:#77716a}
+@media(max-width:700px){
+  .course-card{flex-basis:245px}
+}
+
+.social-line,.social-instagram{font-size:12px;letter-spacing:.03em}
+.social-line{color:#63715c;font-weight:700}
+.social-instagram{font-weight:700}
+@media(max-width:700px){
+  .hero .btns .btn{padding:11px 17px}
+}
+
+@media(max-width:700px){
+  .hero{aspect-ratio:auto;min-height:100svh}
+  .hero-inner{padding:90px 0 70px}
+}
+
+/* Hero layout refinement */
+.hero-inner{
+  max-width:980px;
+  margin:0 auto;
+  padding-left:52px;
+  padding-right:52px;
+}
+.hero-inner > .eyebrow,
+.hero-inner > h1,
+.hero-inner > p,
+.hero-inner > .btns{
+  max-width:760px;
+}
+@media(max-width:700px){
+  .hero-inner{
+    padding-left:28px;
+    padding-right:28px;
+    text-align:center;
+  }
+  .hero-inner > .eyebrow,
+  .hero-inner > h1,
+  .hero-inner > p,
+  .hero-inner > .btns{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .hero-inner > p{
+    max-width:540px;
+  }
+  .hero-inner .btns{
+    justify-content:center;
+  }
+  .hero h1{
+    font-size:clamp(45px,15vw,70px);
+  }
+}
+
+@media(max-width:700px){
+  .philosophy .quote{
+    text-align:center;
+    padding:0 14px;
+    line-height:1.55;
+    font-size:clamp(25px,7.2vw,34px);
+  }
+}
+
+/* Mobile typography refinement */
+@media(max-width:700px){
+  .intro,
+  .hero-inner > p,
+  .about p,
+  .contact p{
+    width:100%;
+    max-width:330px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    line-height:2;
+    letter-spacing:.02em;
+    overflow-wrap:anywhere;
+  }
+
+  .hero-inner > p{
+    text-align:center;
+    max-width:335px;
+  }
+
+  .section-title{
+    line-height:1.45;
+    letter-spacing:.02em;
+  }
+
+  .card p,
+  .product p{
+    line-height:1.9;
+    letter-spacing:.015em;
+  }
+
+  .course-sub{
+    line-height:1.7;
+  }
+}
+
+@media(max-width:700px){
+  .card p,.product p{
+    max-width:300px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:2.05;
+    word-break:normal;
+    overflow-wrap:break-word;
+  }
+  .card{padding:27px 24px;}
+  .grid{gap:16px;}
+  .course-card h3{line-height:1.65;}
+  .course-sub{line-height:1.8;}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#">Re.Laxy<small>KOJI BEAUTY × PARTS CARE</small></a>
+<nav><a href="#concept">Concept</a><a href="#menu">Menu</a><a href="#products">Products</a><a href="#course">Course</a><a href="#about">About</a><a href="#contact">Contact</a><a class="social-line" href="https://lin.ee/UCrwfmY" target="_blank" rel="noopener">公式LINE</a><a class="social-instagram" href="https://www.instagram.com/re.laxy_aroma.co?stkn=MXFmeHJtb2N6cm45Yw%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap hero-inner">
+<div class="eyebrow">FERMENTATION BEAUTY × PARTS BEAUTY</div>
+<h1>Re.Laxy<span>肌を見て、守る美容。</span></h1>
+<p>顔だけではなく、手・首・足・デコルテなど、年齢とともに気になりやすい「部分」に目を向ける。Re.Laxyは、発酵美容とパーツケアを通して、今の肌に必要なケアを考えます。</p>
+<div class="btns"><a class="btn primary" href="https://lin.ee/UCrwfmY" target="_blank" rel="noopener">公式LINE</a><a class="btn" href="https://www.instagram.com/re.laxy_aroma.co?stkn=MXFmeHJtb2N6cm45Yw%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a><a class="btn" href="#menu">ケアを見る</a><a class="btn" href="#course">講習について</a></div>
+</div></section>
+
+<section id="concept"><div class="wrap">
+<div class="section-kicker">CONCEPT</div><h2 class="section-title">「きれいにする」<br>から、<br>「肌を見て、守る」へ。</h2>
+<p class="intro">美容の選択肢が増えた今だからこそ、何かを足す前に「今の肌に何が必要なのか」を考える。Re.Laxyは、31年の美容現場で培った経験をもとに、発酵美容 × パーツ美容という視点から、一人ひとりのケアを考えます。</p>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>Part Beauty</h3><p>顔・手・首・足・背中・デコルテなど、各パーツの「気になる部分」に特化したケア。</p></div>
+<div class="card"><div class="num">02</div><h3>Fermentation</h3><p>日本の発酵文化に着目。麹を美容ケアの選択肢として取り入れます。</p></div>
+<div class="card"><div class="num">03</div><h3>Home Care</h3><p>サロンの時間だけで終わらず、日々のホームケアまで一緒に考えます。</p></div>
+</div></div></section>
+
+<section class="philosophy"><div class="wrap">
+<div class="section-kicker">OUR PHILOSOPHY</div>
+<p class="quote">「新しいものを増やす」<br>より、<br><em>「今の肌に必要なものを選ぶ」。</em></p>
+</div></section>
+
+<section id="menu"><div class="wrap">
+<div class="section-kicker">PARTS CARE</div><h2 class="section-title">Re.Laxyのパーツケア</h2>
+<p class="intro">ハンドケアを原点に、全身の各パーツへ。肌状態を見ながら、必要なケアを組み立てます。</p>
+<div class="grid">
+<div class="card"><h3>Hand Care</h3><p>手荒れ・エイジングの根本原因となるバリア機能の強化</p></div>
+<div class="card"><h3>Foot Care</h3><p>美容麹で肌負担にならない踵の角質ケア</p></div>
+<div class="card"><h3>Neck &amp; Décolleté</h3><p>年齢感じる首のシワ・デコルテのパーツケア</p></div>
+</div></div></section>
+
+<section id="products" style="background:#faf8f3"><div class="wrap">
+<div class="section-kicker">BEAUTY PRODUCTS</div><h2 class="section-title">Re.Laxy Beauty</h2>
+<div class="grid products">
+<div class="product"><div class="product-img">KOJI PACK</div><div class="product-body"><h3>麹kouji美パック</h3><p>国産米の米麹粉を使用した美容パック。ハンドケアをはじめ、フェイシャル・ボディにも。</p></div></div>
+<div class="product"><div class="product-img">KOJI PACK 500g</div><div class="product-body"><h3>業務用麹パック500g</h3><p>サロンでの施術や業務用として使いやすい、大容量の麹パック500g。</p></div></div>
+<div class="product"><div class="product-img">KOJI PACK 1000g</div><div class="product-body"><h3>業務用麹パック1000g</h3><p>サロンでの施術や業務用としてたっぷり使える、大容量の麹パック1000g。</p></div></div>
+</div>
+<div class="btns"><a class="btn primary" href="https://suriiru.thebase.in/" target="_blank" rel="noopener">オンラインショップへ</a></div>
+</div></section>
+
+<section id="course"><div class="wrap">
+<div class="section-kicker">COURSE MENU</div>
+<h2 class="section-title">Re.Laxyの講習プラン</h2>
+<p class="intro">目的やレベルに合わせて選べる講習プラン。現地対面講習を中心に、オンライン受講をご希望の場合は公式LINEからお問い合わせいただけます。</p>
+
+<div class="course-scroll">
+  <div class="course-card">
+    <div class="course-no">01</div><h3>Re.Laxy麹<br>ハンドケアコース</h3>
+    <div class="course-price">¥12,000</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card">
+    <div class="course-no">02</div><h3>Re.Laxy麹<br>ハンドケアコース</h3>
+    <div class="course-sub">3回コース</div><div class="course-price">¥28,800</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card">
+    <div class="course-no">03</div><h3>麹フット<br>ケアコース</h3>
+    <div class="course-price">¥8,800</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card featured">
+    <div class="course-no">04</div><h3>麹セラピスト<br>コース</h3>
+    <div class="course-sub">現地・対面</div><div class="course-price">¥66,000</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card">
+    <div class="course-no">05</div><h3>ハンドケア認定講師<br>養成コース</h3>
+    <div class="course-sub">現地対面・事前面談</div><div class="course-price">¥0</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card dark">
+    <div class="course-no">06</div><h3>Re.Laxy式<br>ハンドケア講習</h3>
+    <div class="course-sub">現地／オンラインは公式LINE</div><div class="course-price">¥66,000</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card">
+    <div class="course-no">07</div><h3>麹フットケア<br>講習</h3>
+    <div class="course-sub">現地／オンラインは公式LINE</div><div class="course-price">¥36,000</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+  <div class="course-card">
+    <div class="course-no">08</div><h3>フットリンパ<br>講習</h3>
+    <div class="course-sub">現地</div><div class="course-price">¥33,000</div>
+    <a href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">予約する →</a>
+  </div>
+</div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+<div class="about-mark">R<br>L</div>
+<div><div class="section-kicker">ABOUT RE.LAXY</div><h2 class="section-title">美容歴31年。<br>まだ、挑戦の途中。</h2>
+<p>Re.Laxy代表・松浦 幹。美容現場31年、講師歴16年。ハンドケアから始まり、パーツ美容、発酵美容、講習、商品開発へと活動を広げています。</p>
+<p>「肌を見て、守る美容」を軸に、サロンでの施術だけではなく、毎日のホームケアや、これからの美容のあり方まで考えていきます。</p>
+</div></div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+<div class="section-kicker">CONTACT</div><h2 class="section-title">あなたの<br>「気になる部分」<br>から。</h2>
+<p>商品・サロン導入・講習について、お気軽にお問い合わせください。</p>
+<div class="btns"><a class="btn primary" href="https://suriiru.thebase.in/" target="_blank" rel="noopener">Shop</a><a class="btn" href="https://note.com/re_laxy" target="_blank" rel="noopener">Note</a><a class="btn" href="https://tol-app.jp/s/hansyyui2g7tksj47r3h" target="_blank" rel="noopener">講習予約</a></div>
+</div></section>
+</main>
+<footer><div class="wrap foot"><span>© Re.Laxy</span><span>Fermentation Beauty × Parts Beauty</span></div></footer>
+</body>
+</html>
